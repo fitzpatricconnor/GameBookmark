@@ -38,7 +38,7 @@
             const LAUNCH_FILES = [
                 {
                     name: "gladihoppers",
-                    url: "https://cdn.jsdelivr.net/gh/th3nu8/eagler@main/v1.12.html"
+                    url: "https://github.com/fitzpatricconnor/GameBookmark/blob/main/gladihoppers"
                 }
             ];
 
