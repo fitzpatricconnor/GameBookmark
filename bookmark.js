@@ -1,0 +1,1 @@
+javascript:(function(){var s=document.createElement('script');s.src='https://raw.githubusercontent.com/fitzpatricconnor/GameBookmark/refs/heads/main/Game%20launcher?token=GHSAT0AAAAAADRK6ECGB4V4HPOQSG3QR57M2KANM6A';document.body.appendChild(s);})();
