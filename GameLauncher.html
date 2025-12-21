@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Game Launcher</title>
     <style>
         /* Page layout */
@@ -42,27 +42,28 @@
                 }
             ];
 
-            // Updated header text
             const HEADER_TEXT = "Game Launcher";
 
             function launchHtmlInNewWindow(rawHtmlUrl) {
+                // Open the new window immediately on user click to avoid popup blocking
+                const newWindow = window.open('about:blank', '_blank');
+                if (!newWindow) {
+                    alert("Popup blocked. Please allow popups for this site and try again.");
+                    return;
+                }
                 fetch(rawHtmlUrl)
                     .then(response => {
                         if (!response.ok) throw new Error('Failed to fetch HTML: ' + response.statusText);
                         return response.text();
                     })
                     .then(htmlText => {
-                        const newWindow = window.open('about:blank', '_blank');
-                        if (!newWindow) {
-                            alert("Popup blocked. Please allow popups for this site and try again.");
-                            return;
-                        }
                         newWindow.document.write(htmlText);
                         newWindow.document.close();
                     })
                     .catch(e => {
                         console.error("Error loading external HTML:", e);
-                        alert(`Could not load HTML file from ${rawHtmlUrl}. Check the console for details.`);
+                        newWindow.document.write("<h1>Error loading page</h1><p>Could not load HTML file.</p>");
+                        newWindow.document.close();
                     });
             }
 
